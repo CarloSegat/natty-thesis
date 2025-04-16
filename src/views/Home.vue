@@ -36,6 +36,7 @@
   <script setup>
   import { ref, onMounted } from 'vue';
   import { useRouter } from 'vue-router';
+  import ShopBar from '../components/ShopBar.vue';
   
   const userName = ref('');
   const router = useRouter();

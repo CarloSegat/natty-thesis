@@ -1,8 +1,12 @@
 <template>
+          <ShopBar />
     <v-container class="pa-5">
+        
+       
+      
         <v-row>
             <v-col v-for="product in products" :key="product.id" cols="12" md="4">
-                <ProductCard :product="product" :isCheckout="false" @add-to-cart="addToCart" />
+                <ProductCard :product="product" :isCheckout="false" />
             </v-col>
         </v-row>
 
@@ -17,6 +21,7 @@
 import { ref } from 'vue';
 import ProductCard from '../components/ProductCard.vue';
 import { useRouter } from 'vue-router';
+import ShopBar from '../components/ShopBar.vue';
 
 const router = useRouter();
 
@@ -29,11 +34,6 @@ const products = ref([
 ]);
 
 const cart = ref([]);
-
-const addToCart = (product) => {
-    cart.value.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart.value));
-};
 
 const goToCart = () => {
     router.push('/checkout'); // Navigate to the checkout page

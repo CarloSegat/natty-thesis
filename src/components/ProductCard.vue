@@ -9,10 +9,19 @@
         <span class="right-aligned" style="color:#007bff;">
             €{{ product.price.toFixed(2) }}
         </span>
-        
+
+        <v-btn v-if="!isCheckout"
+            color="primary"
+            block
+
+            @click="handleAddProduct"
+          >
+          <v-icon>mdi-cart-outline</v-icon> <v-icon >mdi-plus</v-icon>
+          </v-btn>
+<!--         
         <button v-if="!isCheckout" @click.stop="addToCart">
             <v-icon>mdi-cart-outline</v-icon> <v-icon >mdi-plus</v-icon>
-        </button>
+        </button> -->
 
         <!-- <div class="d-flex flex-column align-end">
             <span class="text-h6 text-red-darken-2">
@@ -28,6 +37,15 @@
 
 <script setup>
 import { defineProps, defineEmits } from 'vue';
+import { useCartStore } from '../store/cart.js'
+
+const cartStore = useCartStore()
+
+const handleAddProduct = () => {
+    // emit('add-to-cart', props.product);
+    cartStore.addToCart(props.product)
+}
+
 
 // Define the props coming from the parent component (Shop.vue)
 const props = defineProps({
@@ -44,10 +62,6 @@ const props = defineProps({
 // Define the event that will be emitted when a product is added to the cart
 const emit = defineEmits(['add-to-cart']);
 
-// Method to emit the event to the parent component (Shop.vue)
-const addToCart = () => {
-    emit('add-to-cart', props.product);
-};
 </script>
 
 <style scoped>
@@ -69,7 +83,7 @@ const addToCart = () => {
 .card-container button {
   display: inline-block;
   padding: 4px;
-  background-color: #007bff;
+  background-color: "primary";
   color: white;
   text-align: center;
   border-radius: 8px;
