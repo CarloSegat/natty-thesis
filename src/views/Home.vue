@@ -54,8 +54,8 @@
   onMounted(
     () => {
       localStorage.setItem('cart', JSON.stringify([]));
-      // userName.value = "testName"
-      // startShopping()
+      userName.value = "testName"
+      startShopping()
     }
   );
   

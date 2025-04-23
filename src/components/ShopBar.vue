@@ -8,6 +8,10 @@
       <!-- Cart Bar -->
       <div class="cart-bar">
         <div class="cart-content">
+ 
+        <v-btn color="secondary" @click="goToCart" class="mr-2">
+            <b>CHECKOUT</b>
+        </v-btn>
           <span class="cart-count">{{ cartCount }}</span>
           <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
             <path fill="currentColor" d="M7,18A2,2 0 1,0 9,20A2,2 0 0,0 7,18M1,2V4H3L6.6,11.59L5.25,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42C7.28,15 7.17,14.89 7.17,14.75L7.2,14.65L8.1,13H14.55A2,2 0 0,0 16.3,11.29L20.88,4.85C21,4.65 21,4.41 21,4.18A1,1 0 0,0 20,3H5.21L4.27,1H1M17,18A2,2 0 1,0 19,20A2,2 0 0,0 17,18Z" />
@@ -17,19 +21,26 @@
     </header>
   </template>
   
-  <script setup>
+<script setup>
   import { computed } from 'vue'
   import { useCartStore } from '../store/cart.js'
+  import { useRouter } from 'vue-router';
   
   const cartStore = useCartStore()
   
-  // Reactive cart count from the store
   const cartCount = computed(() => cartStore.cart.length)
-  </script>
+
+  const router = useRouter();
+
+  const goToCart = () => {
+    router.push('/checkout'); // Navigate to the checkout page
+  };
+</script>
   
   <style scoped>
   header {
     width: 100%;
+    position: fixed;
   }
   
   /* Top bar styling */

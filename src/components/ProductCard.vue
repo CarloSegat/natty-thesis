@@ -69,7 +69,7 @@ const emit = defineEmits(['add-to-cart']);
 .card-container {
   display: flex;
   flex-direction: column;
-  width: 200px; /* Adjust as necessary */
+  /* width: 200px; Adjust as necessary */
   border: 1px solid #ccc;
   border-radius: 8px;
   /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
